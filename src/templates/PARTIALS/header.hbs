@@ -1,0 +1,20 @@
+<header>
+  <p>
+    MOVIE-TICKET-BOOKING
+  </p>
+
+  {{#if user}}
+    <div id="has-user">
+      <button id="logout-btn" type="button" onclick="logout()">LOGOUT</button>
+    </div>
+  {{else}}
+    <div id="no-user">
+      <a href="/login">
+        <button type="button">LOGIN</button>
+      </a>
+      <a href="/signup">
+        <button type="button">SIGNUP</button>
+      </a>
+    </div>
+  {{/if}}
+</header>

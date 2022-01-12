@@ -1,0 +1,23 @@
+{
+  "name": "moviebooking",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.24.0",
+    "bcrypt": "^5.0.1",
+    "cookie-parser": "^1.4.6",
+    "cors": "^2.8.5",
+    "dotenv": "^11.0.0",
+    "express": "^4.17.2",
+    "hbs": "^4.2.0",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^6.1.5",
+    "request": "^2.88.2"
+  }
+}
