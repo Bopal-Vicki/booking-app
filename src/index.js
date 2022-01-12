@@ -2,7 +2,7 @@ const express = require("express");
 const dotenv = require("dotenv");
 const path = require("path");
 dotenv.config({ path: "./config.env" });
-require("./db/mongodb.js");
+const mongoose = require("mongoose");
 const hbs = require("hbs");
 const userRouter = require("./routes/userRouter");
 const movieRouter = require("./routes/movieRouter");
@@ -24,6 +24,12 @@ app.use(isLoggedIn);
 app.use(userRouter);
 app.use(movieRouter);
 app.use(viewRouter);
+
+require("dotenv").config();
+
+mongoose.connect(process.env.MONGOURL, () => {
+  console.log("connected");
+});
 
 const port = process.env.PORT || 3000;
 
