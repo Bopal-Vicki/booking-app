@@ -1,4 +1,5 @@
 const express = require("express");
+require("./db/mongodb.js");
 const User = require("../models/userModel");
 const auth = require("../middleware/auth");
 
