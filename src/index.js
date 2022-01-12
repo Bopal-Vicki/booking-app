@@ -27,6 +27,4 @@ app.use(viewRouter);
 
 const port = process.env.PORT || 3000;
 
-app.listen(port, () => {
-  console.log("server listening");
-});
+app.listen(port, () => {});

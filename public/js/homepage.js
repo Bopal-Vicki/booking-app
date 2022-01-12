@@ -1,6 +1,5 @@
 const integrate = async () => {
   const result = await axios.get("/movies");
-  console.log(result.data);
 
   for (let i = 0; i < result.data.length; i++) {
     let img = document.createElement("img");
