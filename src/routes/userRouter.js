@@ -12,6 +12,7 @@ router.post("/users/signup", async (req, res) => {
     res.cookie("jwt", token, {
       expires: new Date(Date.now() + 30 * 60 * 1000),
       httpOnly: true,
+      secure: true,
     });
     res.status(201).send(user);
   } catch (e) {
