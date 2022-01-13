@@ -1,8 +1,9 @@
 const express = require("express");
 const dotenv = require("dotenv");
 const path = require("path");
+const compression = require("compression");
 dotenv.config({ path: "./config.env" });
-const mongoose = require("mongoose");
+require("./db/mongodb");
 const hbs = require("hbs");
 const userRouter = require("./routes/userRouter");
 const movieRouter = require("./routes/movieRouter");
@@ -24,12 +25,13 @@ app.use(isLoggedIn);
 app.use(userRouter);
 app.use(movieRouter);
 app.use(viewRouter);
+app.use(compression());
 
-require("dotenv").config();
+//require("dotenv").config();
 
-mongoose.connect(process.env.MONGOURL, () => {
-  console.log("connected");
-});
+//mongoose.connect(process.env.MONGOURL, () => {
+//console.log("connected");
+//});
 
 const port = process.env.PORT || 3000;
 
