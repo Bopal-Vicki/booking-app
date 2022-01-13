@@ -27,12 +27,6 @@ app.use(movieRouter);
 app.use(viewRouter);
 app.use(compression());
 
-//require("dotenv").config();
-
-//mongoose.connect(process.env.MONGOURL, () => {
-//console.log("connected");
-//});
-
 const port = process.env.PORT || 3000;
 
 app.listen(port, () => {});
