@@ -12,7 +12,6 @@ router.post("/users/signup", async (req, res) => {
     res.cookie("jwt", token, {
       expires: new Date(Date.now() + 30 * 60 * 1000),
       httpOnly: true,
-      secure: true,
     });
     res.status(201).send(user);
   } catch (e) {
@@ -30,7 +29,6 @@ router.post("/users/login", async (req, res) => {
     res.cookie("jwt", token, {
       expires: new Date(Date.now() + 30 * 60 * 1000),
       httpOnly: true,
-      secure: true,
     });
     res.status(200).send();
   } catch (e) {
@@ -43,7 +41,6 @@ router.get("/users/logout", auth, async (req, res) => {
     res.cookie("jwt", "logged out", {
       expires: new Date(Date.now() + 1000),
       httpOnly: true,
-      secure: true,
     });
     res.status(200).send();
   } catch (e) {
