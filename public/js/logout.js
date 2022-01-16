@@ -5,3 +5,7 @@ const logout = async () => {
   } catch (e) {}
 };
 //document.getElementById("has-user").addEventListener("click", logout);
+
+const account = () => {
+  window.location.replace("/account");
+};

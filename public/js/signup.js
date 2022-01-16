@@ -20,6 +20,8 @@ const signup = async (email, password, name) => {
     window.location.replace("/");
   } catch (e) {
     if (e.response.data.startsWith("E11000")) alert("email is already in use");
+    alert(e.response.data);
     window.location.replace("/signup");
   }
+  alert(e);
 };

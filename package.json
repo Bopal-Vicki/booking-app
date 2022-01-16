@@ -9,6 +9,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@sendgrid/mail": "^7.6.0",
     "axios": "^0.24.0",
     "bcrypt": "^5.0.1",
     "compression": "^1.7.4",
@@ -19,7 +20,8 @@
     "hbs": "^4.2.0",
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^6.1.5",
-    "request": "^2.88.2"
+    "request": "^2.88.2",
+    "validator": "^13.7.0"
   },
   "engines": {
     "node": ">=10.0.0"

@@ -1,3 +1,7 @@
+const url = window.location.href;
+const split = url.split("/");
+const id = split[split.length - 1];
+
 document.getElementById("book-btn").addEventListener("click", () => {
   auth();
 });
@@ -31,15 +35,13 @@ const book = async () => {
   document.getElementById("movie").append(submit);
 
   document.getElementById("done").addEventListener("click", () => {
-    const url = window.location.href;
-    const split = url.split("/");
-    const id = split[split.length - 1];
     order(id);
   });
 };
 
 const order = async (movieId) => {
   const seats = document.getElementById("no-of-seats").value;
+  const movieName = document.getElementById("movieName").textContent;
   try {
     const result = await axios({
       method: "POST",
@@ -47,6 +49,7 @@ const order = async (movieId) => {
       data: {
         movieId,
         seats,
+        movieName,
       },
     });
     alert("confirm your booking at your given email");

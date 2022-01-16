@@ -6,6 +6,7 @@
   {{#if user}}
     <div id="has-user">
       <button id="logout-btn" type="button" onclick="logout()">LOGOUT</button>
+      <button id="account-btn" type="button" onclick="account()">MY ACCOUNT</button>
     </div>
   {{else}}
     <div id="no-user">
@@ -17,4 +18,8 @@
       </a>
     </div>
   {{/if}}
+  {{#if sign}}
+    <p style="font-size: larger;">{{error}}</p>
+  {{/if}}
+
 </header>

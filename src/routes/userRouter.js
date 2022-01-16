@@ -13,7 +13,7 @@ router.post("/users/signup", async (req, res) => {
       expires: new Date(Date.now() + 30 * 60 * 1000),
       httpOnly: true,
     });
-    res.status(201).send(user);
+    res.status(201).send();
   } catch (e) {
     res.status(400).send(e.message);
   }

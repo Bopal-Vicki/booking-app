@@ -3,6 +3,7 @@ const getmovies = require("../utils/getmovies");
 const Order = require("../models/orderModel");
 const axios = require("axios");
 const auth = require("../middleware/auth");
+const sendMail = require("../emails/email");
 
 const router = new express.Router();
 
@@ -33,11 +34,26 @@ router.get("/movies/:id", async (req, res) => {
 
 router.post("/order", auth, async (req, res) => {
   try {
-    const order = new Order(req.body);
+    const result = await axios.get(
+      `https://api.themoviedb.org/3/movie/${req.body.movieId}?api_key=${process.env.API_KEY}`
+    );
+    const movieName = result.data.original_title;
+    const order = new Order({ ...req.body, user: req.user._id });
     await order.save();
-    res.status(201).send(order);
+    await sendMail(req.user.email, req.user.name, movieName);
+    await res.status(201).send();
   } catch (e) {
     res.status(400).send(e.message);
+  }
+});
+
+router.get("/bookings", auth, async (req, res) => {
+  try {
+    const user = req.user;
+    await user.populate("bookings");
+    res.status(200).send(user.bookings);
+  } catch (e) {
+    console.log(e);
   }
 });
 

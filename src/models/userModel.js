@@ -1,6 +1,8 @@
 const mongoose = require("mongoose");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
+const validator = require("validator");
+const Order = require("../models/orderModel");
 
 const userSchema = new mongoose.Schema({
   name: {
@@ -14,6 +16,9 @@ const userSchema = new mongoose.Schema({
     type: String,
     trim: true,
     lowercase: true,
+    validate(value) {
+      if (!validator.isEmail(value)) throw new Error("provide a valid email");
+    },
   },
   password: {
     type: String,
@@ -29,6 +34,12 @@ userSchema.pre("save", async function (next) {
     user.password = await bcrypt.hash(user.password, 8);
   }
   next();
+});
+
+userSchema.virtual("bookings", {
+  ref: "Order",
+  localField: "_id",
+  foreignField: "user",
 });
 
 userSchema.statics.validateCredentials = async (email, password) => {
